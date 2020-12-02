@@ -2,29 +2,46 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
-import logo from "./logo.svg";
-import logoTwitter from "./logo-twitter.svg";
-import logoGithub from "./logo-github.svg";
-import logoCodepen from "./logo-codepen.svg";
-import logoYoutube from "./logo-youtube.svg";
-import logoLinkedin from "./logo-linkedin.svg";
-import logoMedium from "./logo-medium.svg";
+import { ReactComponent as Logo } from "./logo.svg";
+import { ReactComponent as Hexagon } from "./hexagon.svg";
+const iconTwitter = "./assets/icon-twitter.svg";
+const iconGithub = "./assets/icon-github.svg";
+const iconCodepen = "./assets/icon-codepen.svg";
+const iconYoutube = "./assets/icon-youtube.svg";
+const iconLinkedin = "./assets/icon-linkedin.svg";
+const iconMedium = "./assets/icon-medium.svg";
 
 const bees = [
-  { title: "Twitter", url: "https://twitter.com/edalgrin", icon: logoTwitter },
-  { title: "Github", url: "https://github.com/edalgrin", icon: logoGithub },
-  { title: "Codepen", url: "https://codepen.com/edalgrin", icon: logoCodepen },
   {
-    title: "Youtube",
-    url: "https://youtube.com/channel/UCkz8V_-rSVY19BcXk-gQRuA/featured",
-    icon: logoYoutube,
+    title: "Twitter",
+    url: "https://twitter.com/edalgrin",
+    icon: <img src={iconTwitter} alt="" />,
+  },
+  {
+    title: "Github",
+    url: "https://github.com/edalgrin",
+    icon: <img src={iconGithub} alt="" />,
+  },
+  {
+    title: "Codepen",
+    url: "https://codepen.com/edalgrin",
+    icon: <img src={iconCodepen} alt="" />,
   },
   {
     title: "Linkedin",
     url: "https://linkedin.com/in/edalgrin/",
-    icon: logoLinkedin,
+    icon: <img src={iconLinkedin} alt="" />,
   },
-  { title: "Medium", url: "https://medium.com/@edalgrin", icon: logoMedium },
+  {
+    title: "Medium",
+    url: "https://medium.com/@edalgrin",
+    icon: <img src={iconMedium} alt="" />,
+  },
+  {
+    title: "Youtube",
+    url: "https://youtube.com/channel/UCkz8V_-rSVY19BcXk-gQRuA/featured",
+    icon: <img src={iconYoutube} alt="" />,
+  },
 ];
 
 const Page = () => {
@@ -42,7 +59,9 @@ const Page = () => {
           onClick={() => setAwake(!awake)}
           title="Open navigation"
         >
-          <img src={logo} alt="" />
+          <div className="icon">
+            <Logo />
+          </div>
         </button>
 
         <ul className="super">
@@ -52,11 +71,15 @@ const Page = () => {
                 <a
                   href={bee.url}
                   target="_blank"
+                  rel="noopener"
                   className="bee worker"
-                  rel="noopener noreferrer"
+                  // rel="noopener noreferrer"
                   title={bee.title}
                 >
-                  <img src={bee.icon} alt="" />
+                  <div className="icon">
+                    <Hexagon />
+                    {bee.icon}
+                  </div>
                 </a>
               </li>
             );

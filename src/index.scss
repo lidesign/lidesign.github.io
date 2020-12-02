@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Variables */
 
 $primary: #0075ff;
@@ -93,33 +97,33 @@ $positions: ((2, 3), (3, 3), (4, 2), (3, 1), (2, 1), (1, 2));
 }
 
 .neon {
-	position: relative;
-	display: inline-block;
-	z-index: 1;
-	@include text-status(on);
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  @include text-status(on);
 
-	&:before {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		transform: scale(2, 4);
-		animation-name: bg-animation;
-		animation-duration: $animation-duration;
-		animation-iteration-count: infinite;
-		background-image: radial-gradient($light-color 0%, transparent 70%);
-		@include bg-status(off);
-	}
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(2, 4);
+    animation-name: bg-animation;
+    animation-duration: $animation-duration;
+    animation-iteration-count: infinite;
+    background-image: radial-gradient($light-color 0%, transparent 70%);
+    @include bg-status(off);
+  }
 
-	span {
-		@include text-status(off);
-		animation-name: text-animation;
-		animation-duration: $animation-duration;
-		animation-iteration-count: infinite;
-	}
+  span {
+    @include text-status(off);
+    animation-name: text-animation;
+    animation-duration: $animation-duration;
+    animation-iteration-count: infinite;
+  }
 }
 
 .hive {
@@ -135,18 +139,35 @@ $positions: ((2, 3), (3, 3), (4, 2), (3, 1), (2, 1), (1, 2));
 .bee {
   display: block;
 
-  img {
+  .icon {
     width: 60px;
+    height: 72px;
     transition: opacity 300ms ease-in-out;
     opacity: 0.5;
     will-change: opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      position: absolute;
+      color: $primary;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    i {
+      color: white
+    }
   }
 
   &:hover,
   &:focus {
     outline: none;
 
-    img {
+    .icon {
       opacity: 1;
     }
   }
